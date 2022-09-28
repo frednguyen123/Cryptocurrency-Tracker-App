@@ -36,7 +36,7 @@ const CoinPage = () => {
         container: {
             display: "flex",
             [theme.breakpoints.down("md")]: {
-                flexDirection: "column",
+                flexDirection: "column",    
                 alignItems: "center",
             },
         },
@@ -53,7 +53,7 @@ const CoinPage = () => {
         },
         heading: {
             fontWeight: "bold",
-            marginBotton: 20,
+            marginBottom: 20,
             fontFamily: "Montserrat"
         },
         description: {
@@ -73,6 +73,8 @@ const CoinPage = () => {
             [theme.breakpoints.down("md")]: {
                 display: "flex",
                 justifyContent: "space-around",
+                flexDirection: "column",
+                alignItems: "center"
             },
             [theme.breakpoints.down("sm")]: {
                 flexDirection: "column",
@@ -81,7 +83,7 @@ const CoinPage = () => {
             [theme.breakpoints.down("xs")]: {
                 alignItems: "start",
             },
-        }
+        },
     }));
 
     const classes = useStyles();
@@ -89,7 +91,7 @@ const CoinPage = () => {
     if(!coin) return <LinearProgress style={{ backgroundColor: "gold"}} />
 
     return (
-        <div classname={classes.container}>
+        <div className={classes.container}>
             <div className={classes.sidebar}>
                 <img 
                     src={coin?.image.large}
@@ -101,7 +103,7 @@ const CoinPage = () => {
                     {coin?.name}
                 </Typography>
                 <Typography variant="subtitle1" className={classes.description}>
-                    {removeHTML(coin?.description.en.split(". ")[0])}. &nbsp;
+                    {removeHTML(coin?.description.en.split(". ")[0])}.&nbsp;
                     {removeHTML(coin?.description.en.split(". ")[1])}.
                 </Typography>
                 <div className={classes.marketData}>
@@ -109,7 +111,7 @@ const CoinPage = () => {
                         <Typography variant='h5' className={classes.heading}>
                             Rank: 
                         </Typography>
-                        &nbsp; &nbsp;
+                        &nbsp; &nbsp;   
                         <Typography variant='h5' style={{fontFamily: "Montserrat"}}>
                             {coin?.market_cap_rank}
                         </Typography>
@@ -135,9 +137,8 @@ const CoinPage = () => {
                         </Typography>
                     </span>
                 </div>
-                {/* Chart */}
-                <CoinInfo coin={coin} />
             </div>
+            <CoinInfo coin={coin}/>
         </div>
     );
 };
