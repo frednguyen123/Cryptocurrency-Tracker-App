@@ -8,6 +8,8 @@ import axios from 'axios';
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from 'chart.js/auto'
 import { Chart }            from 'react-chartjs-2'
+import { chartDays } from '../../config/data';
+import SelectButton from '../SelectButton';
 // import { chartDays } from "../config/data";
 // import { SelectButton } from "./SelectButton";
 
@@ -92,6 +94,22 @@ const CoinInfo = ({ coin }) => {
                                 },
                             }}
                             />
+                            <div 
+                             style={{
+                                display: "flex",
+                                marginTop: 20,
+                                justifyContent: "space-around",
+                                width: "100%",
+                             }}>
+                                {chartDays.map((day) => (
+                                    <SelectButton 
+                                        key={day.value} 
+                                        onClick={() => setDays(day.value)} 
+                                        selected={day.value === days}>
+                                            {day.label}
+                                    </SelectButton>
+                                ))}
+                            </div>
                         </>
                     )
                 }
